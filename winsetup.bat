@@ -3,8 +3,46 @@ setlocal enabledelayedexpansion
 
 :: === Define apps ===
 set "apps="
+:: Browsers
 call :add Google.Chrome
+call :add Mozilla.Firefox
+
+:: Communication
 call :add Discord.Discord
+call :add Microsoft.Teams
+call :add Zoom.Zoom
+
+:: Development Tools
+call :add Git.Git
+call :add JetBrains.Toolbox
+call :add JetBrains.IntelliJIDEA.Ultimate
+call :add JetBrains.PyCharm
+call :add JetBrains.Rider
+call :add Microsoft.DotNet.SDK
+call :add Oracle.JavaSDK
+
+:: Virtualization & Containers
+call :add Docker.DockerDesktop
+call :add Oracle.VirtualBox
+
+:: Utilities
+call :add WinRAR.WinRAR
+call :add Notion.Notion
+call :add NordVPN.NordVPN
+
+:: Games
+call :add Minecraft.MinecraftLauncher
+call :add Valve.Steam
+
+:: System/Hardware
+call :add AdvancedMicroDevices.AMDSoftware
+call :add Asus.ARMOURYCRATE
+call :add Corsair.CUE
+
+:: Productivity
+call :add Microsoft.Office
+call :add Microsoft.OneDrive
+
 
 
 :: Check for --custom mode
