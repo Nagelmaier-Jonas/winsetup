@@ -41,6 +41,43 @@ RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters ,1 ,True >nul 2>&1
 
 echo Wallpaper set.
 
+:: === Download & Set Lock Screen ===
+set "LOCK_URL_BASE=https://raw.githubusercontent.com/Nagelmaier-Jonas/winsetup/main/src/background/lockscreen"
+set "LOCK_PATH="
+
+echo Looking for lock screen image...
+for %%E in (%EXTENSIONS%) do (
+    curl -s -L "!LOCK_URL_BASE!.%%E" -o "%IMG_DIR%\lockscreen.%%E"
+    if exist "%IMG_DIR%\lockscreen.%%E" (
+        for %%I in ("%IMG_DIR%\lockscreen.%%E") do set "FILESIZE=%%~zI"
+        if !FILESIZE! gtr 1000 (
+            set "LOCK_PATH=%IMG_DIR%\lockscreen.%%E"
+            echo Found lock screen image: !LOCK_PATH!
+            goto :lock_found
+        ) else (
+            del /f /q "%IMG_DIR%\lockscreen.%%E" >nul 2>&1
+        )
+    )
+)
+echo Lock screen image not found.
+exit /b 1
+
+:lock_found
+echo Setting lock screen...
+powershell -Command ^
+"try {
+    $img = '%LOCK_PATH%'; ^
+    $regPath = 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization'; ^
+    if (-not (Test-Path $regPath)) { New-Item -Path $regPath -Force | Out-Null }; ^
+    Set-ItemProperty -Path $regPath -Name 'LockScreenImage' -Value $img; ^
+    Set-ItemProperty -Path $regPath -Name 'NoLockScreen' -Value 0 -Type DWord; ^
+    Write-Output 'Lock screen set to: %LOCK_PATH%' ^
+} catch { ^
+    Write-Output 'Failed to set lock screen. Run as administrator?' ^
+}"
+
+echo Lockscreen set.
+
 :: ========== Install Apps ==========
 
 :: === Define apps ===
