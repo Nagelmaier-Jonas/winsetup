@@ -1,3 +1,6 @@
+@echo off
+setlocal enabledelayedexpansion
+
 :: ========== Install Apps ==========
 
 :: === Define apps ===
