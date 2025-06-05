@@ -26,14 +26,21 @@ Edit the batch file to customize this list. Example apps:
 
 ## 🧑‍💻 Usage
 
-### Run with default install (no prompts):
 
+### Run with default install (no prompts):
+```powershell
+curl https://raw.githubusercontent.com/Nagelmaier-Jonas/winsetup/main/winsetup.bat -OutFile winsetup.bat; .\winsetup.bat
+```
+or if downloaded
 ```bat
 winsetup.bat
 ```
 
 ### Run in interactive mode:
-
+```powershell
+curl https://raw.githubusercontent.com/Nagelmaier-Jonas/winsetup/main/winsetup.bat -OutFile winsetup.bat; .\winsetup.bat --custom
+```
+or if downloaded
 ```bat
 winsetup.bat --custom
 ```
