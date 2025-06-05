@@ -67,6 +67,7 @@ call :add NordSecurity.NordVPN
 set "CUSTOM_MODE=0"
 if /i "%~1"=="--custom" (
     set "CUSTOM_MODE=1"
+    echo custom
 )
 :: === Prompt and collect selected apps ===
 set "selected="
