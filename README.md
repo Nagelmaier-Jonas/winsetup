@@ -24,7 +24,7 @@ Edit the batch file to customize this list. Example apps:
 - Steam
 - Spotify
 
-## 🧑‍💻 Usage
+## 🧑‍💻 Usage (must use PowerShell)
 
 
 ### Run with default install (no prompts):
