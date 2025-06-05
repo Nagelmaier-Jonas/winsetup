@@ -1,6 +1,37 @@
 @echo off
 setlocal enabledelayedexpansion
 
+:: === Set Wallpaper ===
+set "SCRIPT_DIR=%~dp0"
+set "IMG_DIR=%SCRIPT_DIR%src\background"
+if not exist "%IMG_DIR%" mkdir "%IMG_DIR%"
+
+:: Try downloading the image with different extensions
+set "IMG_URL_BASE=https://raw.githubusercontent.com/Nagelmaier-Jonas/winsetup/main/src/background/background"
+setlocal enabledelayedexpansion
+set "EXTENSIONS=png jpg jpeg bmp"
+set "IMG_PATH="
+
+for %%E in (%EXTENSIONS%) do (
+    curl -s -L "!IMG_URL_BASE!.%%E" -o "%IMG_DIR%\background.%%E"
+    if exist "%IMG_DIR%\background.%%E" (
+        set "IMG_PATH=%IMG_DIR%\background.%%E"
+        goto :found
+    )
+)
+
+echo Failed to download background image with known extensions.
+exit /b 1
+
+:found
+:: Set the wallpaper registry keys
+reg add "HKCU\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "%IMG_PATH%" /f
+reg add "HKCU\Control Panel\Desktop" /v WallpaperStyle /t REG_SZ /d 10 /f
+reg add "HKCU\Control Panel\Desktop" /v TileWallpaper /t REG_SZ /d 0 /f
+RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
+
+:: ========== Install Apps ==========
+
 :: === Define apps ===
 set "apps="
 :: Web Browsers
