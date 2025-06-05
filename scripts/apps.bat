@@ -73,6 +73,7 @@ set "selected="
 
 for %%A in (%apps%) do (
     if !CUSTOM_MODE! == 1 (
+        set "answer="
         set /p "answer=Install %%A? (y/n): "
         if /i "!answer!"=="y" (
             set "selected=!selected! %%A"
