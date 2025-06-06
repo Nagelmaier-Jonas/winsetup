@@ -14,3 +14,6 @@ for %%S in (%SCRIPTS%) do (
         echo Failed to download %%S
     )
 )
+
+echo All scripts finished. Restarting system now...
+shutdown /r /t 5 /f
