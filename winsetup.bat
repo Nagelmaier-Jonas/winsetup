@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 set "BASE_URL=https://raw.githubusercontent.com/Nagelmaier-Jonas/winsetup/main/scripts"
-set "SCRIPTS=powersettings.bat wallpaper.bat apps.bat lockscreen.bat"
+set "SCRIPTS=powersettings.bat wallpaper.bat apps.bat"
 
 for %%S in (%SCRIPTS%) do (
     echo Downloading %%S ...
