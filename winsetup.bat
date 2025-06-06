@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 set "BASE_URL=https://raw.githubusercontent.com/Nagelmaier-Jonas/winsetup/main/scripts"
-set "SCRIPTS=powersettings.bat apps.bat background.ps1"
+set "SCRIPTS=powersettings.bat background.ps1 apps.bat"
 
 for %%S in (%SCRIPTS%) do (
     echo Downloading %%S ...
