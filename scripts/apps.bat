@@ -100,6 +100,9 @@ for %%A in (!selected!) do (
     winget install --id=%%A --silent --accept-package-agreements --accept-source-agreements
 )
 
+:: === Upgrade ===
+winget upgrade --accept-source-agreements --accept-package-agreements
+
 echo.
 echo All done!
 pause
