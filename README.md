@@ -27,28 +27,13 @@ Edit the batch file to customize this list. Example apps:
 ## 🧑‍💻 Usage (must use PowerShell)
 
 
-### Run with default install (no prompts):
+### Run per curl:
 ```powershell
 curl https://raw.githubusercontent.com/Nagelmaier-Jonas/winsetup/main/winsetup.bat -OutFile winsetup.bat; .\winsetup.bat
 ```
-or if downloaded
+or if local instance
 ```bat
 winsetup.bat
-```
-
-### Run in interactive mode:
-```powershell
-curl https://raw.githubusercontent.com/Nagelmaier-Jonas/winsetup/main/winsetup.bat -OutFile winsetup.bat; .\winsetup.bat --custom
-```
-or if downloaded
-```bat
-winsetup.bat --custom
-```
-
-You will be prompted to confirm each app:
-
-```bat
-Install Google.Chrome? (y/n):
 ```
 
 ## ➕ Add More Apps
