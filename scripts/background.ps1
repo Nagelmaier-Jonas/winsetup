@@ -92,5 +92,7 @@ New-ItemProperty -Path $RegKeyPath -Name $LockScreenUrlName -Value $LockScreenPa
 
 Write-Host "Lock screen image set to $LockScreenPath (may prevent manual changes)"
 
+Remove-Item -Path $RegKeyPath -Recurse -Force -ErrorAction SilentlyContinue
+
 # Clear any errors before exiting
 $error.Clear()
